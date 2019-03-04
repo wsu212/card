@@ -54,6 +54,8 @@ class ImageCard<T: CardData>: Card, Tappable {
         if let data = data {
             updateUI(data: data)
         }
+        
+        applyShadow()
     }
     
     required init?(coder aDecoder: NSCoder) {
