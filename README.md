@@ -1,7 +1,5 @@
 # Card
 
-`let carouselCard = CarouselCard<PhotoCell>(title: "Photos", items: [])`
-
 ![](Images/carousel.png)
 
 ## Prerequisites
