@@ -11,11 +11,17 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
-
+    var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+    
+    var navigationController: UINavigationController {
+        let viewController = CardViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        return navigationController
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
         return true
     }
 

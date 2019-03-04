@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CardViewController.swift
 //  Card
 //
 //  Created by Wei-Lun Su on 3/3/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
