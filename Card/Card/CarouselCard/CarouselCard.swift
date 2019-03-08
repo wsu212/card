@@ -16,8 +16,6 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
     
     // MARK: - UI Properties
     
-    private let itemSize: CGSize
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +33,7 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
         flowLayout.minimumLineSpacing = 15
         flowLayout.scrollDirection = .horizontal
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 4, right: 15)
-        flowLayout.itemSize = itemSize
+        flowLayout.itemSize = CGSize(width: 210, height: 300)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.scrollsToTop = false
@@ -58,12 +56,10 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
     weak var delegate: CarouselCardDelegate?
     
     init(title: String,
-         items: [CarouselData] = [],
-         itemSize: CGSize = CGSize(width: 210, height: 300)) {
+         items: [CarouselData] = []) {
         
         self.title = title
         self.items = items
-        self.itemSize = itemSize
         
         super.init(frame: .zero)
         setupSubviews()
@@ -101,7 +97,7 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
             titleLabel.rightAnchor.constraint(equalTo: rightAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
             
-            collectionView.heightAnchor.constraint(equalToConstant: itemSize.height),
+            collectionView.heightAnchor.constraint(equalToConstant: 304.0),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor)])
