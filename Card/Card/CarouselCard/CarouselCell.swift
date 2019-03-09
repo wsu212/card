@@ -9,5 +9,5 @@
 import UIKit
 
 open class CarouselCell: UICollectionViewCell {
-    open func configure(item: CarouselData) {}
+    open func configure(item: CardData) {}
 }

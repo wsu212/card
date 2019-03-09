@@ -39,7 +39,6 @@ class ListCardRow<T: CardData>: UIView, Tappable {
         setupSubviews()
         setupConstraints()
         addTapGestureRecognizer(target: self, action: #selector(tap))
-        setupAccessibilityLabel()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,11 +65,5 @@ class ListCardRow<T: CardData>: UIView, Tappable {
     
     @objc func tap() {
         delegate?.userDidTapRow(viewModel.row)
-    }
-    
-    private func setupAccessibilityLabel() {
-        isAccessibilityElement = true
-        accessibilityTraits = .button
-        accessibilityLabel = viewModel.title
     }
 }

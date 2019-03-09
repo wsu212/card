@@ -14,8 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
     
     var navigationController: UINavigationController {
-        let viewModel = GalleriesViewModel()
-        let viewController = CarouselViewController(viewModel: viewModel)
+        let viewController = CardTemplatesViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
     }

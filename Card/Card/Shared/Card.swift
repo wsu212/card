@@ -15,19 +15,13 @@ open class Card: UIView {
         cardView.layer.cornerRadius = 5.0
         cardView.backgroundColor = .white
         cardView.clipsToBounds = true
-        cardView.translatesAutoresizingMaskIntoConstraints = false
         return cardView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(cardView)
-        
-        NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: topAnchor),
-            cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            cardView.leftAnchor.constraint(equalTo: leftAnchor),
-            cardView.rightAnchor.constraint(equalTo: rightAnchor)])
+        cardView.pinEdges(to: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {
