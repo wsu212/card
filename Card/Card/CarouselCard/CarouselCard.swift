@@ -15,18 +15,6 @@ protocol CarouselCardDelegate: AnyObject {
 class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     
     // MARK: - UI Properties
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
 
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -44,8 +32,6 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
     }()
 
     // MARK: - non-UI Properties
-
-    private var title: String
     
     private var items: [CarouselData] {
         didSet { collectionView.reloadData() }
@@ -55,19 +41,14 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
 
     weak var delegate: CarouselCardDelegate?
     
-    init(title: String,
-         items: [CarouselData] = []) {
-        
-        self.title = title
+    init(items: [CarouselData] = []) {
         self.items = items
-        
         super.init(frame: .zero)
         setupSubviews()
         setupConstraints()
     }
 
-    func updateUI(title: String, items: [CarouselData]) {
-        self.title = title
+    func updateUI(items: [CarouselData]) {
         self.items = items
     }
 
@@ -83,21 +64,14 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        [titleLabel,
-         collectionView].forEach { addSubview($0) }
+        [collectionView].forEach { addSubview($0) }
     }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width),
-            
-            titleLabel.heightAnchor.constraint(equalToConstant: 22.0),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
-            
             collectionView.heightAnchor.constraint(equalToConstant: 304.0),
+            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 22.0),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor)])

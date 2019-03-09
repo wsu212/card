@@ -15,14 +15,7 @@ class PhotoCell: CarouselCell {
     override init (frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(card)
-        
-        card.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            card.topAnchor.constraint(equalTo: contentView.topAnchor),
-            card.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            card.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
+        card.pinEdges(to: contentView)
     }
     
     required public init?(coder: NSCoder) {

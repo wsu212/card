@@ -15,6 +15,7 @@ class CardDescriptionLabel: UILabel {
         self.font = LabelAppearance.subtitle.font
         self.textColor = textColor
         self.numberOfLines = numberOfLines
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder aDecoder: NSCoder) {

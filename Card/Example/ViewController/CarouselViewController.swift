@@ -14,12 +14,11 @@ class CarouselViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(GalleryTableViewCell.self, forCellReuseIdentifier: GalleryTableViewCell.reuseIdentifier)
+        tableView.registerCell(type: GalleryTableViewCell.self)
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100.0
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -47,12 +46,7 @@ class CarouselViewController: UIViewController {
     
     private func setupSubviews() {
         view.addSubview(tableView)
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
+        tableView.pinEdges(to: view)
     }
 }
 
@@ -82,7 +76,7 @@ extension CarouselViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: GalleryTableViewCell.reuseIdentifier) as? GalleryTableViewCell else { return UITableViewCell() }
+        let cell = tableView.dequeueCell(type: GalleryTableViewCell.self, indexPath: indexPath)
         let gallery = viewModel.gallery(at: indexPath)
         cell.configure(with: gallery)
         return cell

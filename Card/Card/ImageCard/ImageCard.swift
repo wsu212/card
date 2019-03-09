@@ -17,17 +17,12 @@ class ImageCard<T: CardData>: Card, Tappable {
     
     // MARK: - UI Properties
     
-    var imageView: CardImageView = {
-        let imageView = CardImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+    let imageView = CardImageView()
     
     var titleLabel: UILabel = {
         let label = UILabel()
         label.font = LabelAppearance.title.font
         label.textColor = LabelAppearance.title.textColor
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -35,7 +30,6 @@ class ImageCard<T: CardData>: Card, Tappable {
         let label = UILabel()
         label.font = LabelAppearance.subtitle.font
         label.textColor = LabelAppearance.subtitle.textColor
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -71,7 +65,10 @@ class ImageCard<T: CardData>: Card, Tappable {
     private func setupSubviews() {
         [imageView,
          titleLabel,
-         subtitleLabel].forEach { cardView.addSubview($0) }
+         subtitleLabel].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            cardView.addSubview($0)
+        }
     }
     
     private func createConstraints() {
