@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct ListCardViewModel<T: CardData> {
+struct ListCardViewModel<T: CardData> {
     
     var title: String
     var components: [ListCardRowViewModel<T>]
     
-    public init(title: String, components: [ListCardRowViewModel<T>]) {
+    init(title: String, components: [ListCardRowViewModel<T>]) {
         self.title = title
         self.components = components
     }

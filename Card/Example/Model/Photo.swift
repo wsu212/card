@@ -31,17 +31,3 @@ extension Photo {
         return !title.isEmpty && !owner.isEmpty
     }
 }
-
-extension Photo: CarouselData {
-    var cardTitle: String {
-        return title ?? ""
-    }
-    
-    var cardDescription: String {
-        return owner ?? ""
-    }
-    
-    var cardImageURL: String? {
-        return imageURL
-    }
-}

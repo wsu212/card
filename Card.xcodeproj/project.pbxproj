@@ -17,6 +17,8 @@
 		046B3DFB2233249E00759527 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3DF92233249E00759527 /* UITableViewExtensions.swift */; };
 		046B3DFC2233249E00759527 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3DFA2233249E00759527 /* UIViewExtension.swift */; };
 		048F8A0F2233518A009DD6A1 /* ListCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F8A0E2233518A009DD6A1 /* ListCardTableViewCell.swift */; };
+		04ADF25E22336D35006CD36D /* CardTemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADF25D22336D35006CD36D /* CardTemplatesViewController.swift */; };
+		04D5CC4F2234279800EEF090 /* Photo+CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D5CC4E2234279800EEF090 /* Photo+CardData.swift */; };
 		04D96668222D6C6700BFC87A /* GalleriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665A222D6C6700BFC87A /* GalleriesViewModel.swift */; };
 		04D96669222D6C6700BFC87A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665C222D6C6700BFC87A /* Collection.swift */; };
 		04D9666A222D6C6700BFC87A /* Galleries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665D222D6C6700BFC87A /* Galleries.swift */; };
@@ -29,7 +31,6 @@
 		04D96671222D6C6800BFC87A /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96667222D6C6700BFC87A /* CarouselViewController.swift */; };
 		04D96673222D6C7A00BFC87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96672222D6C7A00BFC87A /* AppDelegate.swift */; };
 		04D9667B222D6D6300BFC87A /* CarouselCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96677222D6D6300BFC87A /* CarouselCard.swift */; };
-		04D9667C222D6D6300BFC87A /* CarouselData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96678222D6D6300BFC87A /* CarouselData.swift */; };
 		04D9667D222D6D6300BFC87A /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96679222D6D6300BFC87A /* CarouselCell.swift */; };
 		04D96687222D6DE600BFC87A /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9667F222D6DE600BFC87A /* CardData.swift */; };
 		04D96688222D6DE600BFC87A /* CardDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96680222D6DE600BFC87A /* CardDescriptionLabel.swift */; };
@@ -68,6 +69,8 @@
 		046B3DF92233249E00759527 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		046B3DFA2233249E00759527 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		048F8A0E2233518A009DD6A1 /* ListCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardTableViewCell.swift; sourceTree = "<group>"; };
+		04ADF25D22336D35006CD36D /* CardTemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTemplatesViewController.swift; sourceTree = "<group>"; };
+		04D5CC4E2234279800EEF090 /* Photo+CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CardData.swift"; sourceTree = "<group>"; };
 		04D9665A222D6C6700BFC87A /* GalleriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleriesViewModel.swift; sourceTree = "<group>"; };
 		04D9665C222D6C6700BFC87A /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		04D9665D222D6C6700BFC87A /* Galleries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Galleries.swift; sourceTree = "<group>"; };
@@ -80,7 +83,6 @@
 		04D96667222D6C6700BFC87A /* CarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		04D96672222D6C7A00BFC87A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D96677222D6D6300BFC87A /* CarouselCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCard.swift; sourceTree = "<group>"; };
-		04D96678222D6D6300BFC87A /* CarouselData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselData.swift; sourceTree = "<group>"; };
 		04D96679222D6D6300BFC87A /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		04D9667F222D6DE600BFC87A /* CardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		04D96680222D6DE600BFC87A /* CardDescriptionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDescriptionLabel.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				04D9665D222D6C6700BFC87A /* Galleries.swift */,
 				04D9665E222D6C6700BFC87A /* Photos.swift */,
 				04D9665F222D6C6700BFC87A /* Photo.swift */,
+				04D5CC4E2234279800EEF090 /* Photo+CardData.swift */,
 				04D96660222D6C6700BFC87A /* GalleryInfo.swift */,
 				04D96661222D6C6700BFC87A /* Gallery.swift */,
 			);
@@ -232,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				04D96667222D6C6700BFC87A /* CarouselViewController.swift */,
+				04ADF25D22336D35006CD36D /* CardTemplatesViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -252,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				04D96677222D6D6300BFC87A /* CarouselCard.swift */,
-				04D96678222D6D6300BFC87A /* CarouselData.swift */,
 				04D96679222D6D6300BFC87A /* CarouselCell.swift */,
 			);
 			path = CarouselCard;
@@ -448,6 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D5CC4F2234279800EEF090 /* Photo+CardData.swift in Sources */,
 				046B3DFC2233249E00759527 /* UIViewExtension.swift in Sources */,
 				046B3DFB2233249E00759527 /* UITableViewExtensions.swift in Sources */,
 				04D96687222D6DE600BFC87A /* CardData.swift in Sources */,
@@ -473,8 +477,8 @@
 				046B3DF6223320F800759527 /* ListCardRow.swift in Sources */,
 				04D9666A222D6C6700BFC87A /* Galleries.swift in Sources */,
 				04D96689222D6DE600BFC87A /* CardAppearance.swift in Sources */,
+				04ADF25E22336D35006CD36D /* CardTemplatesViewController.swift in Sources */,
 				04D9668D222D6DE600BFC87A /* CardImageView.swift in Sources */,
-				04D9667C222D6D6300BFC87A /* CarouselData.swift in Sources */,
 				04D9668A222D6DE600BFC87A /* CardTitleLabel.swift in Sources */,
 				04D9666B222D6C6700BFC87A /* Photos.swift in Sources */,
 				04D96668222D6C6700BFC87A /* GalleriesViewModel.swift in Sources */,

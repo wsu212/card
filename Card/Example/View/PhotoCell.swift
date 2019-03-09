@@ -10,7 +10,7 @@ import UIKit
 
 class PhotoCell: CarouselCell {
     
-    private let card = ImageCard<Photo>()
+    private let card = ImageCard<Photo>(data: nil)
     
     override init (frame: CGRect) {
         super.init(frame: frame)
@@ -18,11 +18,11 @@ class PhotoCell: CarouselCell {
         card.pinEdges(to: contentView)
     }
     
-    required public init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    override public func configure(item: CarouselData) {
+    override func configure(item: CardData) {
         card.updateUI(data: item)
     }
 }

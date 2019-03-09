@@ -8,17 +8,15 @@
 
 import UIKit
 
-public protocol ListCardDelegate: AnyObject {
+protocol ListCardDelegate: AnyObject {
     func userDidTapRow(_ row: CardData)
 }
 
-public class ListCard<T: CardData>: Card {
+class ListCard<T: CardData>: Card {
     
     // MARK: - UI Properties
     
-    private var titleLabel: CardTitleLabel = {
-        return CardTitleLabel(numberOfLines: 1)
-    }()
+    private let titleLabel = CardTitleLabel(numberOfLines: 1)
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -35,22 +33,22 @@ public class ListCard<T: CardData>: Card {
     // MARK: - non-UI Properties
     
     private var viewModel:  ListCardViewModel<T>
-    public weak var delegate: ListCardDelegate?
+    weak var delegate: ListCardDelegate?
     
-    public init(viewModel: ListCardViewModel<T>) {
+    init(viewModel: ListCardViewModel<T>) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupSubviews()
         setupConstraints()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Public API
     
-    public static func build(withTitle title: String, rows: [T]) -> ListCard<T> {
+    static func build(withTitle title: String, rows: [T]) -> ListCard<T> {
         let components = rows.map { ListCardRowViewModel(row: $0) }
         let viewModel = ListCardViewModel(title: title, components: components)
         return ListCard(viewModel: viewModel)

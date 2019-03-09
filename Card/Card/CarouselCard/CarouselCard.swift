@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CarouselCardDelegate: AnyObject {
-    func didSelectItem(_ item: CarouselData)
+    func didSelectItem(_ item: CardData)
 }
 
 class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -33,7 +33,7 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
 
     // MARK: - non-UI Properties
     
-    private var items: [CarouselData] {
+    private var items: [CardData] {
         didSet { collectionView.reloadData() }
     }
 
@@ -41,18 +41,18 @@ class CarouselCard<Cell: CarouselCell>: UIView, UICollectionViewDataSource, UICo
 
     weak var delegate: CarouselCardDelegate?
     
-    init(items: [CarouselData] = []) {
+    init(items: [CardData] = []) {
         self.items = items
         super.init(frame: .zero)
         setupSubviews()
         setupConstraints()
     }
 
-    func updateUI(items: [CarouselData]) {
+    func updateUI(items: [CardData]) {
         self.items = items
     }
 
-    func selectItem(_ item: CarouselData) {
+    func selectItem(_ item: CardData) {
         delegate?.didSelectItem(item)
     }
 
