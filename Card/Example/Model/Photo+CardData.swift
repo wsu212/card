@@ -9,15 +9,7 @@
 import Foundation
 
 extension Photo: CardData {
-    var cardTitle: String {
-        return title ?? ""
-    }
-    
-    var cardDescription: String {
-        return owner ?? ""
-    }
-    
-    var cardImageURL: String? {
-        return imageURL
-    }
+    var cardTitle: String? { return title }
+    var cardDescription: String? { return owner }
+    var cardImageURL: String? { return imageURL }
 }

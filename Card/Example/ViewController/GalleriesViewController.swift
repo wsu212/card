@@ -1,5 +1,5 @@
 //
-//  CarouselViewController.swift
+//  GalleriesViewController.swift
 //  Card
 //
 //  Created by Wei-Lun Su on 3/3/19.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-class CarouselViewController: UIViewController {
-    
-    private var viewModel: GalleriesViewModel
+class GalleriesViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -22,6 +20,8 @@ class CarouselViewController: UIViewController {
         return tableView
     }()
     
+    private var viewModel: GalleriesViewModel
+    
     // MARK: - Initializer
     
     init(viewModel: GalleriesViewModel) {
@@ -30,7 +30,6 @@ class CarouselViewController: UIViewController {
         self.viewModel.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        setupSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,6 +40,7 @@ class CarouselViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSubviews()
         viewModel.getGalleryIds()
     }
     
@@ -50,7 +50,7 @@ class CarouselViewController: UIViewController {
     }
 }
 
-extension CarouselViewController: GalleriesViewModelDelegate {
+extension GalleriesViewController: GalleriesViewModelDelegate {
     
     func didUpdateGalleries() {
         tableView.reloadData()
@@ -69,7 +69,7 @@ extension CarouselViewController: GalleriesViewModelDelegate {
     }
 }
 
-extension CarouselViewController: UITableViewDataSource, UITableViewDelegate {
+extension GalleriesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfGalleries()

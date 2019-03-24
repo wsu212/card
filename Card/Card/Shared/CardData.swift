@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol CardData {
-    var cardTitle: String { get }
-    var cardDescription: String { get }
+    var cardTitle: String? { get }
+    var cardDescription: String? { get }
     var cardImageURL: String? { get }
 }
