@@ -12,7 +12,7 @@ struct ListCardRowViewModel<T: CardData> {
     
     var row: T
     var image: String { return row.cardImageURL ?? "" }
-    var title: String { return row.cardTitle }
+    var title: String { return row.cardTitle ?? "" }
     
     init(row: T) {
         self.row = row

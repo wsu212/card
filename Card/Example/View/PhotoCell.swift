@@ -10,7 +10,7 @@ import UIKit
 
 class PhotoCell: CarouselCell {
     
-    private let card = ImageCard<Photo>(data: nil)
+    private let card = ImageCard<Photo>()
     
     override init (frame: CGRect) {
         super.init(frame: frame)

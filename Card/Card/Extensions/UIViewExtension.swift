@@ -18,14 +18,14 @@ extension UILabel {
 }
 
 enum LabelAppearance {
-    case navigationBar
+    case headline
     case header
     case title
     case subtitle
     
     var font: UIFont {
         switch self {
-        case .navigationBar: return UIFont.boldSystemFont(ofSize: 20.0)
+        case .headline: return UIFont.boldSystemFont(ofSize: 18.0)
         case .header: return UIFont.boldSystemFont(ofSize: 16.0)
         case .title: return UIFont.boldSystemFont(ofSize: 14.0)
         case .subtitle: return UIFont.italicSystemFont(ofSize: 11.0)
