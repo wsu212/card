@@ -8,18 +8,14 @@
 
 import Foundation
 
-protocol GalleriesViewModelDelegate: AnyObject {
-    func didUpdateGalleries()
-    func didFailedUpdateGalleries()
-}
-
 class GalleriesViewModel {
     
-    private let service = PhotosService()
-    weak var delegate: GalleriesViewModelDelegate?
+    private let service = FlickrService()
+    var didUpdateGalleries: (() -> Void)?
+    var didFailedUpdateGalleries: (() -> Void)?
     
     var galleries: [Gallery] {
-        didSet { self.delegate?.didUpdateGalleries() }
+        didSet { self.didUpdateGalleries?() }
     }
     
     init(galleries: [Gallery] = []) {
@@ -31,7 +27,7 @@ class GalleriesViewModel {
             if let infos = infos {
                 infos.forEach { self.getGallery(by: $0) }
             } else {
-                self.delegate?.didFailedUpdateGalleries()
+                self.didFailedUpdateGalleries?()
             }
         }
     }
@@ -41,16 +37,23 @@ class GalleriesViewModel {
             if let gallery = gallery {
                 self.galleries.append(gallery)
             } else {
-                self.delegate?.didFailedUpdateGalleries()
+                self.didFailedUpdateGalleries?()
             }
         }
     }
     
-    func numberOfGalleries() -> Int {
+    func numberOfSections() -> Int {
         return galleries.count
     }
     
-    func gallery(at indexPath: IndexPath) -> Gallery {
-        return galleries[indexPath.row]
+    func numberOfItems(in section: Int) -> Int {
+        let gallery = galleries[section]
+        return gallery.photos?.photo?.count ?? 0
+    }
+    
+    func photo(at indexPath: IndexPath) -> Photo? {
+        let gallery = galleries[indexPath.section]
+        let photo = gallery.photos?.photo?[indexPath.row]
+        return photo
     }
 }

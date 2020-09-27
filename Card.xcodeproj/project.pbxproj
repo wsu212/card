@@ -21,7 +21,7 @@
 		04D96668222D6C6700BFC87A /* GalleriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665A222D6C6700BFC87A /* GalleriesViewModel.swift */; };
 		04D96669222D6C6700BFC87A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665C222D6C6700BFC87A /* Collection.swift */; };
 		04D9666B222D6C6700BFC87A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665E222D6C6700BFC87A /* Photos.swift */; };
-		04D96670222D6C6700BFC87A /* PhotosService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96665222D6C6700BFC87A /* PhotosService.swift */; };
+		04D96670222D6C6700BFC87A /* FlickrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96665222D6C6700BFC87A /* FlickrService.swift */; };
 		04D96671222D6C6800BFC87A /* GalleriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96667222D6C6700BFC87A /* GalleriesViewController.swift */; };
 		04D96673222D6C7A00BFC87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96672222D6C7A00BFC87A /* AppDelegate.swift */; };
 		04D9667D222D6D6300BFC87A /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96679222D6D6300BFC87A /* CarouselCell.swift */; };
@@ -65,7 +65,7 @@
 		04D9665A222D6C6700BFC87A /* GalleriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleriesViewModel.swift; sourceTree = "<group>"; };
 		04D9665C222D6C6700BFC87A /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		04D9665E222D6C6700BFC87A /* Photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
-		04D96665222D6C6700BFC87A /* PhotosService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosService.swift; sourceTree = "<group>"; };
+		04D96665222D6C6700BFC87A /* FlickrService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrService.swift; sourceTree = "<group>"; };
 		04D96667222D6C6700BFC87A /* GalleriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleriesViewController.swift; sourceTree = "<group>"; };
 		04D96672222D6C7A00BFC87A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D96679222D6D6300BFC87A /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 		04D96664222D6C6700BFC87A /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				04D96665222D6C6700BFC87A /* PhotosService.swift */,
+				04D96665222D6C6700BFC87A /* FlickrService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -432,7 +432,7 @@
 				046B3DF4223320F800759527 /* ListCard.swift in Sources */,
 				046B3DF5223320F800759527 /* ListCardRowViewModel.swift in Sources */,
 				04D9668C222D6DE600BFC87A /* Card.swift in Sources */,
-				04D96670222D6C6700BFC87A /* PhotosService.swift in Sources */,
+				04D96670222D6C6700BFC87A /* FlickrService.swift in Sources */,
 				04D96669222D6C6700BFC87A /* Collection.swift in Sources */,
 				04D9668B222D6DE600BFC87A /* Tappable.swift in Sources */,
 				04D9667D222D6D6300BFC87A /* CarouselCell.swift in Sources */,

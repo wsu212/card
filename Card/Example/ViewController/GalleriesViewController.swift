@@ -19,7 +19,6 @@ class GalleriesViewController: UICollectionViewController {
         let layout = Self.layout
         super.init(collectionViewLayout: layout)
         collectionView.collectionViewLayout = layout
-        self.viewModel.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,6 +54,7 @@ class GalleriesViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindToViewModel()
         setupSubviews()
         viewModel.getGalleryIds()
     }
@@ -65,37 +65,39 @@ class GalleriesViewController: UICollectionViewController {
         collectionView.dataSource = self
         collectionView.register(cell: PhotoCell.self)
     }
-}
-
-extension GalleriesViewController: GalleriesViewModelDelegate {
     
-    func didUpdateGalleries() {
-        collectionView.reloadData()
-    }
-    
-    func didFailedUpdateGalleries() {
-        let alertController = UIAlertController(title: "Whoops, looks like we hit a network issue.",
-                                                message: nil,
-                                                preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in self.viewModel.getGalleryIds() }
+    private func bindToViewModel() {
+        viewModel.didUpdateGalleries = { [weak self] in
+            self?.collectionView.reloadData()
+        }
         
-        [defaultAction, retryAction].forEach { alertController.addAction($0) }
-        
-        present(alertController, animated: true, completion: nil)
+        viewModel.didFailedUpdateGalleries = { [weak self] in
+            let alertController = UIAlertController(title: "Whoops, looks like we hit a network issue.",
+                                                    message: nil,
+                                                    preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in self?.viewModel.getGalleryIds() }
+            
+            [defaultAction, retryAction].forEach { alertController.addAction($0) }
+            
+            self?.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
 extension GalleriesViewController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return viewModel.numberOfSections()
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfGalleries()
+        return viewModel.numberOfItems(in: section)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PhotoCell = collectionView.dequeue(for: indexPath)
-        let gallery = viewModel.gallery(at: indexPath)
-        if let photo = gallery.photos?.photo?[indexPath.row] {
+        let photo = viewModel.photo(at: indexPath)
+        if let photo = photo {
             cell.configure(item: photo)
         }
         return cell
