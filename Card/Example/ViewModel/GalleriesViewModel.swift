@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import Combine
 
 class GalleriesViewModel {
     
     private let service = FlickrService()
+    
+    private var cancellable: AnyCancellable?
+    
     var didUpdateGalleries: (() -> Void)?
     var didFailedUpdateGalleries: (() -> Void)?
     
@@ -22,14 +26,11 @@ class GalleriesViewModel {
         self.galleries = galleries
     }
     
-    func getGalleryIds(page: Int = 0, itemsPerPage: Int = 10) {
-        service.getGalleryIds(page: page, itemsPerPage: itemsPerPage) { infos in
-            if let infos = infos {
+    func getAllGalleryIds(page: Int = 0, itemsPerPage: Int = 20) {
+        self.cancellable = service.getAllGalleryIds(page: page, itemsPerPage: itemsPerPage)
+            .sink(receiveCompletion: { _ in }, receiveValue: { infos in
                 infos.forEach { self.getGallery(by: $0) }
-            } else {
-                self.didFailedUpdateGalleries?()
-            }
-        }
+        })
     }
     
     func getGallery(by info: GalleryInfo) {

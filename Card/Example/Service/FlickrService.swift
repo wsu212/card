@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 import Alamofire
 
 class FlickrService {
@@ -27,29 +28,31 @@ class FlickrService {
             }
         }
     }
+}
+
+extension FlickrService {
     
-    func getGalleryIds(page: Int, itemsPerPage: Int, completion:@escaping ([GalleryInfo]?) -> ()) {
+    func getAllGalleryIds(page: Int, itemsPerPage: Int) -> AnyPublisher<[GalleryInfo], Error> {
         let parameters = "&page=\(page)&per_page=\(itemsPerPage)"
-        let url = Self.baseURL + "?method=\(Content.galleries.method)\(Self.format)\(parameters)&api_key=\(Self.apiKey)&user_id=\(Self.flickrId)"
-        
-        Alamofire.request(url).responseData { response in
-            if let data = response.data, let collection = try? Self.decoder.decode(Collection.self, from: data), let infos = collection.galleries?.gallery {
-                completion(infos)
-            } else {
-                completion(nil)
-            }
+        let urlString = Self.baseURL + "?method=\(Content.galleries.method)\(Self.format)\(parameters)&api_key=\(Self.apiKey)&user_id=\(Self.flickrId)"
+        guard let url = URL(string: urlString) else {
+            fatalError("Invalid URL.")
         }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: Collection.self, decoder: Self.decoder)
+            .compactMap(\.galleries?.gallery)
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
     }
     
     func getGallery(by info: GalleryInfo, completion:@escaping (Gallery?) -> ()) {
-        
         guard let id = info.gallery_id else {
             completion(nil)
             return
         }
-        
         let url = Self.baseURL + "?method=\(Content.photos.method)\(Self.format)&api_key=\(Self.apiKey)&gallery_id=\(id)"
-        
         Alamofire.request(url).responseData { response in
             if let data = response.data, let gallery = try? Self.decoder.decode(Gallery.self, from: data) {
                 var galleryCopy = gallery
