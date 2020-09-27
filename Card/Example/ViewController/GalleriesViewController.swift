@@ -8,17 +8,7 @@
 
 import UIKit
 
-class GalleriesViewController: UIViewController {
-    
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.registerCell(type: GalleryTableViewCell.self)
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = .none
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100.0
-        return tableView
-    }()
+class GalleriesViewController: UICollectionViewController {
     
     private var viewModel: GalleriesViewModel
     
@@ -26,15 +16,38 @@ class GalleriesViewController: UIViewController {
     
     init(viewModel: GalleriesViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        let layout = Self.layout
+        super.init(collectionViewLayout: layout)
+        collectionView.collectionViewLayout = layout
         self.viewModel.delegate = self
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private static let layout = UICollectionViewCompositionalLayout { _, _ in
+        carouselLayoutSection
+    }
+
+    private static let carouselLayoutSection: NSCollectionLayoutSection = {
+      let itemSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .absolute(300.0)
+      )
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+      let groupSize = NSCollectionLayoutSize(
+        widthDimension: .absolute(200.0),
+        heightDimension: .estimated(300.0)
+      )
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.orthogonalScrollingBehavior = .continuous
+      section.interGroupSpacing = 10
+      section.contentInsets = .init(top: 10, leading: 10, bottom: 0, trailing: 10)
+      return section
+    }()
     
     // MARK: - Life Cycle Methods
     
@@ -45,15 +58,17 @@ class GalleriesViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        view.addSubview(tableView)
-        tableView.pinEdges(to: view)
+        view.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .systemBackground
+        collectionView.dataSource = self
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
     }
 }
 
 extension GalleriesViewController: GalleriesViewModelDelegate {
     
     func didUpdateGalleries() {
-        tableView.reloadData()
+        collectionView.reloadData()
     }
     
     func didFailedUpdateGalleries() {
@@ -69,16 +84,20 @@ extension GalleriesViewController: GalleriesViewModelDelegate {
     }
 }
 
-extension GalleriesViewController: UITableViewDataSource, UITableViewDelegate {
+extension GalleriesViewController {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfGalleries()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(type: GalleryTableViewCell.self, indexPath: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else {
+            return UICollectionViewCell()
+        }
         let gallery = viewModel.gallery(at: indexPath)
-        cell.configure(with: gallery)
+        if let photo = gallery.photos?.photo?[indexPath.row] {
+            cell.configure(item: photo)
+        }
         return cell
     }
 }
