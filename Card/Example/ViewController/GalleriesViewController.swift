@@ -26,6 +26,8 @@ class GalleriesViewController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Compositional Layout
+    
     private static let layout = UICollectionViewCompositionalLayout { _, _ in
         carouselLayoutSection
     }
@@ -61,7 +63,7 @@ class GalleriesViewController: UICollectionViewController {
         view.backgroundColor = .systemBackground
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
-        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
+        collectionView.register(cell: PhotoCell.self)
     }
 }
 
@@ -91,9 +93,7 @@ extension GalleriesViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else {
-            return UICollectionViewCell()
-        }
+        let cell: PhotoCell = collectionView.dequeue(for: indexPath)
         let gallery = viewModel.gallery(at: indexPath)
         if let photo = gallery.photos?.photo?[indexPath.row] {
             cell.configure(item: photo)
