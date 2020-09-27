@@ -7,50 +7,44 @@
 //
 
 import Foundation
-
-protocol GalleriesViewModelDelegate: AnyObject {
-    func didUpdateGalleries()
-    func didFailedUpdateGalleries()
-}
+import Combine
 
 class GalleriesViewModel {
     
-    private let service = PhotosService()
-    weak var delegate: GalleriesViewModelDelegate?
+    private let service = FlickrService()
+    
+    private var cancellable: AnyCancellable?
+    
+    var didUpdateGalleries: (() -> Void)?
+    var didFailedUpdateGalleries: (() -> Void)?
     
     var galleries: [Gallery] {
-        didSet { self.delegate?.didUpdateGalleries() }
+        didSet { self.didUpdateGalleries?() }
     }
     
     init(galleries: [Gallery] = []) {
         self.galleries = galleries
     }
     
-    func getGalleryIds(page: Int = 0, itemsPerPage: Int = 10) {
-        service.getGalleryIds(page: page, itemsPerPage: itemsPerPage) { infos in
-            if let infos = infos {
-                infos.forEach { self.getGallery(by: $0) }
-            } else {
-                self.delegate?.didFailedUpdateGalleries()
-            }
-        }
+    func getGalleries(page: Int = 0, itemsPerPage: Int = 20) {
+        self.cancellable = service.getGalleries(page: page, itemsPerPage: itemsPerPage)
+            .sink(receiveCompletion: { _ in }, receiveValue: { galleries in
+            self.galleries = galleries
+        })
     }
     
-    func getGallery(by info: GalleryInfo) {
-        service.getGallery(by: info) { gallery in
-            if let gallery = gallery {
-                self.galleries.append(gallery)
-            } else {
-                self.delegate?.didFailedUpdateGalleries()
-            }
-        }
-    }
-    
-    func numberOfGalleries() -> Int {
+    func numberOfSections() -> Int {
         return galleries.count
     }
     
-    func gallery(at indexPath: IndexPath) -> Gallery {
-        return galleries[indexPath.row]
+    func numberOfItems(in section: Int) -> Int {
+        let gallery = galleries[section]
+        return gallery.photos?.photo?.count ?? 0
+    }
+    
+    func photo(at indexPath: IndexPath) -> Photo? {
+        let gallery = galleries[indexPath.section]
+        let photo = gallery.photos?.photo?[indexPath.row]
+        return photo
     }
 }

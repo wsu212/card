@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0429C1FD224715FF006B47BD /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C1FB224715FF006B47BD /* GalleryTableViewCell.swift */; };
 		0429C1FE224715FF006B47BD /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429C1FC224715FF006B47BD /* PhotoCell.swift */; };
 		042FBEF8222CB17700A3569C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042FBEF7222CB17700A3569C /* Assets.xcassets */; };
 		042FBEFB222CB17700A3569C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042FBEF9222CB17700A3569C /* LaunchScreen.storyboard */; };
@@ -22,10 +21,9 @@
 		04D96668222D6C6700BFC87A /* GalleriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665A222D6C6700BFC87A /* GalleriesViewModel.swift */; };
 		04D96669222D6C6700BFC87A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665C222D6C6700BFC87A /* Collection.swift */; };
 		04D9666B222D6C6700BFC87A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665E222D6C6700BFC87A /* Photos.swift */; };
-		04D96670222D6C6700BFC87A /* PhotosService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96665222D6C6700BFC87A /* PhotosService.swift */; };
+		04D96670222D6C6700BFC87A /* FlickrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96665222D6C6700BFC87A /* FlickrService.swift */; };
 		04D96671222D6C6800BFC87A /* GalleriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96667222D6C6700BFC87A /* GalleriesViewController.swift */; };
 		04D96673222D6C7A00BFC87A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96672222D6C7A00BFC87A /* AppDelegate.swift */; };
-		04D9667B222D6D6300BFC87A /* CarouselCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96677222D6D6300BFC87A /* CarouselCard.swift */; };
 		04D9667D222D6D6300BFC87A /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96679222D6D6300BFC87A /* CarouselCell.swift */; };
 		04D96687222D6DE600BFC87A /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9667F222D6DE600BFC87A /* CardData.swift */; };
 		04D96688222D6DE600BFC87A /* CardDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96680222D6DE600BFC87A /* CardDescriptionLabel.swift */; };
@@ -49,7 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0429C1FB224715FF006B47BD /* GalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewCell.swift; sourceTree = "<group>"; };
 		0429C1FC224715FF006B47BD /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		042FBEED222CB17600A3569C /* Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Card.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		042FBEF7222CB17700A3569C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,10 +65,9 @@
 		04D9665A222D6C6700BFC87A /* GalleriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleriesViewModel.swift; sourceTree = "<group>"; };
 		04D9665C222D6C6700BFC87A /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		04D9665E222D6C6700BFC87A /* Photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
-		04D96665222D6C6700BFC87A /* PhotosService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosService.swift; sourceTree = "<group>"; };
+		04D96665222D6C6700BFC87A /* FlickrService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrService.swift; sourceTree = "<group>"; };
 		04D96667222D6C6700BFC87A /* GalleriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleriesViewController.swift; sourceTree = "<group>"; };
 		04D96672222D6C7A00BFC87A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04D96677222D6D6300BFC87A /* CarouselCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCard.swift; sourceTree = "<group>"; };
 		04D96679222D6D6300BFC87A /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		04D9667F222D6DE600BFC87A /* CardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		04D96680222D6DE600BFC87A /* CardDescriptionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDescriptionLabel.swift; sourceTree = "<group>"; };
@@ -200,7 +196,6 @@
 		04D96662222D6C6700BFC87A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0429C1FB224715FF006B47BD /* GalleryTableViewCell.swift */,
 				0429C1FC224715FF006B47BD /* PhotoCell.swift */,
 			);
 			path = View;
@@ -209,7 +204,7 @@
 		04D96664222D6C6700BFC87A /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				04D96665222D6C6700BFC87A /* PhotosService.swift */,
+				04D96665222D6C6700BFC87A /* FlickrService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -237,7 +232,6 @@
 		04D96675222D6D6300BFC87A /* CarouselCard */ = {
 			isa = PBXGroup;
 			children = (
-				04D96677222D6D6300BFC87A /* CarouselCard.swift */,
 				04D96679222D6D6300BFC87A /* CarouselCell.swift */,
 			);
 			path = CarouselCard;
@@ -293,7 +287,6 @@
 				042FBEE9222CB17600A3569C /* Sources */,
 				042FBEEA222CB17600A3569C /* Frameworks */,
 				042FBEEB222CB17600A3569C /* Resources */,
-				B066AC0D089C761A7B7F1809 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -402,30 +395,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B066AC0D089C761A7B7F1809 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Card/Pods-Card-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Card/Pods-Card-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -440,14 +409,12 @@
 				04D96673222D6C7A00BFC87A /* AppDelegate.swift in Sources */,
 				04D96671222D6C6800BFC87A /* GalleriesViewController.swift in Sources */,
 				04D96688222D6DE600BFC87A /* CardDescriptionLabel.swift in Sources */,
-				0429C1FD224715FF006B47BD /* GalleryTableViewCell.swift in Sources */,
 				04D96695222D78D000BFC87A /* ImageCard.swift in Sources */,
 				046B3DF7223320F800759527 /* ListCardViewModel.swift in Sources */,
 				046B3DF4223320F800759527 /* ListCard.swift in Sources */,
 				046B3DF5223320F800759527 /* ListCardRowViewModel.swift in Sources */,
-				04D9667B222D6D6300BFC87A /* CarouselCard.swift in Sources */,
 				04D9668C222D6DE600BFC87A /* Card.swift in Sources */,
-				04D96670222D6C6700BFC87A /* PhotosService.swift in Sources */,
+				04D96670222D6C6700BFC87A /* FlickrService.swift in Sources */,
 				04D96669222D6C6700BFC87A /* Collection.swift in Sources */,
 				04D9668B222D6DE600BFC87A /* Tappable.swift in Sources */,
 				04D9667D222D6D6300BFC87A /* CarouselCell.swift in Sources */,
@@ -615,6 +582,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H5VQ968J7G;
 				INFOPLIST_FILE = Card/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -634,6 +602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H5VQ968J7G;
 				INFOPLIST_FILE = Card/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

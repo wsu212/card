@@ -8,17 +8,7 @@
 
 import UIKit
 
-class GalleriesViewController: UIViewController {
-    
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.registerCell(type: GalleryTableViewCell.self)
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = .none
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100.0
-        return tableView
-    }()
+class GalleriesViewController: UICollectionViewController {
     
     private var viewModel: GalleriesViewModel
     
@@ -26,59 +16,90 @@ class GalleriesViewController: UIViewController {
     
     init(viewModel: GalleriesViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-        self.viewModel.delegate = self
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        let layout = Self.layout
+        super.init(collectionViewLayout: layout)
+        collectionView.collectionViewLayout = layout
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Compositional Layout
+    
+    private static let layout = UICollectionViewCompositionalLayout { _, _ in
+        carouselLayoutSection
+    }
+
+    private static let carouselLayoutSection: NSCollectionLayoutSection = {
+      let itemSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .absolute(300.0)
+      )
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+      let groupSize = NSCollectionLayoutSize(
+        widthDimension: .absolute(200.0),
+        heightDimension: .estimated(300.0)
+      )
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.orthogonalScrollingBehavior = .continuous
+      section.interGroupSpacing = 10
+      section.contentInsets = .init(top: 10, leading: 10, bottom: 0, trailing: 10)
+      return section
+    }()
+    
     // MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindToViewModel()
         setupSubviews()
-        viewModel.getGalleryIds()
+        viewModel.getGalleries()
     }
     
     private func setupSubviews() {
-        view.addSubview(tableView)
-        tableView.pinEdges(to: view)
+        view.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .systemBackground
+        collectionView.dataSource = self
+        collectionView.register(cell: PhotoCell.self)
+    }
+    
+    private func bindToViewModel() {
+        viewModel.didUpdateGalleries = { [weak self] in
+            self?.collectionView.reloadData()
+        }
+        
+        viewModel.didFailedUpdateGalleries = { [weak self] in
+            let alertController = UIAlertController(title: "Whoops, looks like we hit a network issue.",
+                                                    message: nil,
+                                                    preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in self?.viewModel.getGalleries() }
+            
+            [defaultAction, retryAction].forEach { alertController.addAction($0) }
+            
+            self?.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
-extension GalleriesViewController: GalleriesViewModelDelegate {
-    
-    func didUpdateGalleries() {
-        tableView.reloadData()
+extension GalleriesViewController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return viewModel.numberOfSections()
     }
     
-    func didFailedUpdateGalleries() {
-        let alertController = UIAlertController(title: "Whoops, looks like we hit a network issue.",
-                                                message: nil,
-                                                preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in self.viewModel.getGalleryIds() }
-        
-        [defaultAction, retryAction].forEach { alertController.addAction($0) }
-        
-        present(alertController, animated: true, completion: nil)
-    }
-}
-
-extension GalleriesViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfGalleries()
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.numberOfItems(in: section)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(type: GalleryTableViewCell.self, indexPath: indexPath)
-        let gallery = viewModel.gallery(at: indexPath)
-        cell.configure(with: gallery)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: PhotoCell = collectionView.dequeue(for: indexPath)
+        let photo = viewModel.photo(at: indexPath)
+        if let photo = photo {
+            cell.configure(item: photo)
+        }
         return cell
     }
 }
