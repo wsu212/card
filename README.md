@@ -20,4 +20,4 @@ Make sure you have CocoaPods installed.
 
 ## Author
 
-* Wei-Lun Su, allensu212@gmail.com
+* Wei-Lun Su, wsu212@gmail.com
