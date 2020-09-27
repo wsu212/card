@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireImage
 
 extension UILabel {
     func applyAppearance(_ appearance: LabelAppearance) {
@@ -25,10 +24,10 @@ enum LabelAppearance {
     
     var font: UIFont {
         switch self {
-        case .headline: return UIFont.boldSystemFont(ofSize: 18.0)
-        case .header: return UIFont.boldSystemFont(ofSize: 16.0)
-        case .title: return UIFont.boldSystemFont(ofSize: 14.0)
-        case .subtitle: return UIFont.italicSystemFont(ofSize: 11.0)
+        case .headline: return .boldSystemFont(ofSize: 18.0)
+        case .header: return .boldSystemFont(ofSize: 16.0)
+        case .title: return .boldSystemFont(ofSize: 14.0)
+        case .subtitle: return .italicSystemFont(ofSize: 11.0)
         }
     }
     
@@ -43,10 +42,15 @@ enum LabelAppearance {
 
 extension UIImageView {
     func setImage(url: String?) {
-        guard let url = url, let imageUrl = URL(string: url) else { return }
-        af_setImage(withURL: imageUrl,
-                    imageTransition: .crossDissolve(0.4),
-                    runImageTransitionIfCached: false)
+        guard let url = url,
+              let imageUrl = URL(string: url) else { return }
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: imageUrl) {
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: data)
+                }
+            }
+        }
     }
 }
 

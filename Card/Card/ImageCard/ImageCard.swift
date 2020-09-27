@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireImage
 
 protocol ImageCardDelegate: AnyObject {
     func userDidTapImageCard(data: CardData)

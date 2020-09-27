@@ -26,21 +26,11 @@ class GalleriesViewModel {
         self.galleries = galleries
     }
     
-    func getAllGalleryIds(page: Int = 0, itemsPerPage: Int = 20) {
-        self.cancellable = service.getAllGalleryIds(page: page, itemsPerPage: itemsPerPage)
-            .sink(receiveCompletion: { _ in }, receiveValue: { infos in
-                infos.forEach { self.getGallery(by: $0) }
+    func getGalleries(page: Int = 0, itemsPerPage: Int = 20) {
+        self.cancellable = service.getGalleries(page: page, itemsPerPage: itemsPerPage)
+            .sink(receiveCompletion: { _ in }, receiveValue: { galleries in
+            self.galleries = galleries
         })
-    }
-    
-    func getGallery(by info: GalleryInfo) {
-        service.getGallery(by: info) { gallery in
-            if let gallery = gallery {
-                self.galleries.append(gallery)
-            } else {
-                self.didFailedUpdateGalleries?()
-            }
-        }
     }
     
     func numberOfSections() -> Int {

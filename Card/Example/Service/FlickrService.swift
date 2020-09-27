@@ -8,7 +8,6 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 class FlickrService {
     private static let apiKey = "857ada15e03464531ad7ce95a61c545b"
@@ -32,7 +31,18 @@ class FlickrService {
 
 extension FlickrService {
     
-    func getAllGalleryIds(page: Int, itemsPerPage: Int) -> AnyPublisher<[GalleryInfo], Error> {
+    func getGalleries(page: Int, itemsPerPage: Int) -> AnyPublisher<[Gallery], Error> {
+        return getGalleryIds(page: page, itemsPerPage: itemsPerPage)
+            .flatMap { ids in
+                Publishers.Sequence(sequence: ids.map { self.getGallery(by: $0) })
+                    .flatMap { $0 }
+                    .collect()
+            }
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
+    }
+    
+    private func getGalleryIds(page: Int, itemsPerPage: Int) -> AnyPublisher<[GalleryInfo], Error> {
         let parameters = "&page=\(page)&per_page=\(itemsPerPage)"
         let urlString = Self.baseURL + "?method=\(Content.galleries.method)\(Self.format)\(parameters)&api_key=\(Self.apiKey)&user_id=\(Self.flickrId)"
         guard let url = URL(string: urlString) else {
@@ -43,25 +53,21 @@ extension FlickrService {
             .map(\.data)
             .decode(type: Collection.self, decoder: Self.decoder)
             .compactMap(\.galleries?.gallery)
-            .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }
     
-    func getGallery(by info: GalleryInfo, completion:@escaping (Gallery?) -> ()) {
+    private func getGallery(by info: GalleryInfo) -> AnyPublisher<Gallery, Error> {
         guard let id = info.gallery_id else {
-            completion(nil)
-            return
+            fatalError("Invalid gallery id.")
         }
-        let url = Self.baseURL + "?method=\(Content.photos.method)\(Self.format)&api_key=\(Self.apiKey)&gallery_id=\(id)"
-        Alamofire.request(url).responseData { response in
-            if let data = response.data, let gallery = try? Self.decoder.decode(Gallery.self, from: data) {
-                var galleryCopy = gallery
-                galleryCopy.title = info.title?._content
-                galleryCopy.photos?.photo = gallery.photos?.photo?.filter { $0.isDisplayable }
-                completion(galleryCopy)
-            } else {
-                completion(nil)
-            }
+        let urlString = Self.baseURL + "?method=\(Content.photos.method)\(Self.format)&api_key=\(Self.apiKey)&gallery_id=\(id)"
+        guard let url = URL(string: urlString) else {
+            fatalError("Invalid URL.")
         }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: Gallery.self, decoder: Self.decoder)
+            .eraseToAnyPublisher()
     }
 }

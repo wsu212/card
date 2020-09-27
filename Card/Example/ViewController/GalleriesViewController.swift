@@ -56,7 +56,7 @@ class GalleriesViewController: UICollectionViewController {
         super.viewDidLoad()
         bindToViewModel()
         setupSubviews()
-        viewModel.getAllGalleryIds()
+        viewModel.getGalleries()
     }
     
     private func setupSubviews() {
@@ -76,7 +76,7 @@ class GalleriesViewController: UICollectionViewController {
                                                     message: nil,
                                                     preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in self?.viewModel.getAllGalleryIds() }
+            let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in self?.viewModel.getGalleries() }
             
             [defaultAction, retryAction].forEach { alertController.addAction($0) }
             
