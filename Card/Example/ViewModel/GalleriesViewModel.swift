@@ -16,7 +16,6 @@ class GalleriesViewModel {
     private var cancellable: AnyCancellable?
     
     var didUpdateGalleries: (() -> Void)?
-    var didFailedUpdateGalleries: (() -> Void)?
     
     var galleries: [Gallery] {
         didSet { self.didUpdateGalleries?() }

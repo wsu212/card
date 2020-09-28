@@ -55,10 +55,10 @@ class ImageCard<T: CardData>: Card, Tappable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateUI(data: CardData) {
-        titleLabel.text = data.cardTitle
-        subtitleLabel.text = data.cardDescription
-        imageView.setImage(url: data.cardImageURL)
+    func updateUI(data: CardData?) {
+        titleLabel.text = data?.cardTitle
+        subtitleLabel.text = data?.cardDescription
+        imageView.setImage(url: data?.cardImageURL)
     }
     
     private func setupSubviews() {
