@@ -10,5 +10,13 @@ import Foundation
 import Combine
 
 protocol Service {
+    var apiKey: String { get }
+    var baseURL: String { get }
+    var decoder: JSONDecoder { get }
+
     func get<T: Decodable>(page: Int, itemsPerPage: Int) -> AnyPublisher<[T], Error>
+}
+
+extension Service {
+    var decoder: JSONDecoder { JSONDecoder() }
 }
