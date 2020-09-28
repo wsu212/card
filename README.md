@@ -12,7 +12,7 @@ Make sure you have CocoaPods installed.
 
 ## Usage
 
-1. To run the example project, run `pod install` from the Plated directory first.
+1. To run the example project, run `pod install` from the card directory first.
 
 2. Open `Card.xcworkspace`.
 
