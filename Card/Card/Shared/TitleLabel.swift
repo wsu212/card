@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardTitleLabel: UILabel {
+class TitleLabel: UILabel {
     
     init(numberOfLines: Int) {
         super.init(frame: .zero)

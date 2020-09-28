@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
     
     var navigationController: UINavigationController {
-        let viewModel = GalleriesViewModel()
-        let viewController = GalleriesViewController(viewModel: viewModel)
+        let viewModel = ListViewModel<Gallery>(items: [], service: GalleryService())
+        let viewController = CollectionViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
     }

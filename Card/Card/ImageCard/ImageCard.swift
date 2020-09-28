@@ -9,14 +9,14 @@
 import UIKit
 
 protocol ImageCardDelegate: AnyObject {
-    func userDidTapImageCard(data: CardData)
+    func userDidTapImageCard(item: Item)
 }
 
-class ImageCard<T: CardData>: Card, Tappable {
+class ImageCard<T: Item>: ItemView, Tappable {
     
     // MARK: - UI Properties
     
-    let imageView = CardImageView()
+    let imageView = ItemImageView()
     
     var titleLabel: UILabel = {
         let label = UILabel()
@@ -34,18 +34,18 @@ class ImageCard<T: CardData>: Card, Tappable {
     
     // MARK: - non-UI Properties
     
-    private var data: T?
+    private var item: T?
     weak var delegate: ImageCardDelegate?
     
-    init(data: T? = nil) {
-        self.data = data
+    init(item: T? = nil) {
+        self.item = item
         super.init(frame: .zero)
         setupSubviews()
         createConstraints()
         addTapGestureRecognizer(target: self, action: #selector(tap))
         
-        if let data = data {
-            updateUI(data: data)
+        if let item = item {
+            updateUI(item: item)
         }
         
         applyShadow()
@@ -55,10 +55,10 @@ class ImageCard<T: CardData>: Card, Tappable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateUI(data: CardData?) {
-        titleLabel.text = data?.cardTitle
-        subtitleLabel.text = data?.cardDescription
-        imageView.setImage(url: data?.cardImageURL)
+    func updateUI(item: Item?) {
+        titleLabel.text = item?.itemTitle
+        subtitleLabel.text = item?.itemDescription
+        imageView.setImage(url: item?.itemImageURL)
     }
     
     private func setupSubviews() {
@@ -66,30 +66,30 @@ class ImageCard<T: CardData>: Card, Tappable {
          titleLabel,
          subtitleLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            cardView.addSubview($0)
+            mainView.addSubview($0)
         }
     }
     
     private func createConstraints() {
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalToConstant: 194.0),
-            imageView.topAnchor.constraint(equalTo: cardView.topAnchor),
-            imageView.leftAnchor.constraint(equalTo: cardView.leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: cardView.rightAnchor),
+            imageView.topAnchor.constraint(equalTo: mainView.topAnchor),
+            imageView.leftAnchor.constraint(equalTo: mainView.leftAnchor),
+            imageView.rightAnchor.constraint(equalTo: mainView.rightAnchor),
             
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20.0),
-            titleLabel.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 20.0),
-            titleLabel.rightAnchor.constraint(equalTo: cardView.rightAnchor, constant: -20.0),
+            titleLabel.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 20.0),
+            titleLabel.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: -20.0),
             
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6.0),
-            subtitleLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -20.0),
-            subtitleLabel.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 20.0),
-            subtitleLabel.rightAnchor.constraint(equalTo: cardView.rightAnchor, constant: -20.0)])
+            subtitleLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20.0),
+            subtitleLabel.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 20.0),
+            subtitleLabel.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: -20.0)])
     }
     
     @objc func tap() {
-        if let data = data {
-            delegate?.userDidTapImageCard(data: data)
+        if let item = item {
+            delegate?.userDidTapImageCard(item: item)
         }
     }
 }

@@ -1,6 +1,6 @@
 //
-//  FlickrService.swift
-//  PhotosBrowser
+//  GalleryService.swift
+//  Card
 //
 //  Created by Wei-Lun Su on 1/26/19.
 //  Copyright © 2019 Wei-Lun Su. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class FlickrService {
+class GalleryService {
     private static let apiKey = "857ada15e03464531ad7ce95a61c545b"
     private static let flickrId = "66956608@N06"
     private static let baseURL = "https://api.flickr.com/services/rest/"
@@ -29,9 +29,9 @@ class FlickrService {
     }
 }
 
-extension FlickrService {
+extension GalleryService: Service {
     
-    func getGalleries(page: Int, itemsPerPage: Int) -> AnyPublisher<[Gallery], Error> {
+    func get<T: Decodable>(page: Int, itemsPerPage: Int) -> AnyPublisher<[T], Error> {
         return getGalleryIds(page: page, itemsPerPage: itemsPerPage)
             .flatMap { ids in
                 Publishers.Sequence(sequence: ids.map { self.getGallery(by: $0) })
@@ -56,7 +56,7 @@ extension FlickrService {
             .eraseToAnyPublisher()
     }
     
-    private func getGallery(by info: GalleryInfo) -> AnyPublisher<Gallery, Error> {
+    private func getGallery<T: Decodable>(by info: GalleryInfo) -> AnyPublisher<T, Error> {
         guard let id = info.gallery_id else {
             fatalError("Invalid gallery id.")
         }
@@ -67,7 +67,7 @@ extension FlickrService {
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
-            .decode(type: Gallery.self, decoder: Self.decoder)
+            .decode(type: T.self, decoder: Self.decoder)
             .eraseToAnyPublisher()
     }
 }

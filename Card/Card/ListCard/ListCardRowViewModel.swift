@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct ListCardRowViewModel<T: CardData> {
+struct ListCardRowViewModel<T: Item> {
     
     var row: T
-    var image: String { return row.cardImageURL ?? "" }
-    var title: String { return row.cardTitle ?? "" }
+    var image: String { return row.itemImageURL ?? "" }
+    var title: String { return row.itemTitle ?? "" }
     
     init(row: T) {
         self.row = row

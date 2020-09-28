@@ -9,14 +9,14 @@
 import UIKit
 
 protocol ListCardDelegate: AnyObject {
-    func userDidTapRow(_ row: CardData)
+    func userDidTapRow(_ row: Item)
 }
 
-class ListCard<T: CardData>: Card {
+class ListCard<T: Item>: ItemView {
     
     // MARK: - UI Properties
     
-    private let titleLabel = CardTitleLabel(numberOfLines: 1)
+    private let titleLabel = TitleLabel(numberOfLines: 1)
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -57,7 +57,7 @@ class ListCard<T: CardData>: Card {
     // MARK: - Private helper methods
     
     private func setupSubviews() {
-        [titleLabel, stackView].forEach { cardView.addSubview($0) }
+        [titleLabel, stackView].forEach { mainView.addSubview($0) }
         titleLabel.text = viewModel.title
         viewModel.components.forEach {
             let row = ListCardRow(viewModel: $0, delegate: self)
@@ -79,7 +79,7 @@ class ListCard<T: CardData>: Card {
 }
 
 extension ListCard: ListCardRowDelegate {
-    func userDidTapRow(_ row: CardData) {
+    func userDidTapRow(_ row: Item) {
         delegate?.userDidTapRow(row)
     }
 }

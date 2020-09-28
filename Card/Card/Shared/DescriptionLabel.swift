@@ -1,5 +1,5 @@
 //
-//  CardDescriptionLabel.swift
+//  DescriptionLabel.swift
 //  Card
 //
 //  Created by Wei-Lun Su on 3/3/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardDescriptionLabel: UILabel {
+class DescriptionLabel: UILabel {
     
     init(numberOfLines: Int, textColor: UIColor) {
         super.init(frame: .zero)
