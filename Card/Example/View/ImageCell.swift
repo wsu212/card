@@ -25,4 +25,9 @@ class ImageCell: CarouselCell {
     override func configure(item: CardData) {
         card.updateUI(data: item)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        card.updateUI(data: nil)
+    }
 }
