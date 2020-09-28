@@ -54,7 +54,9 @@ class GalleriesViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindToViewModel()
+        viewModel.didUpdateGalleries = { [weak self] in
+            self?.collectionView.reloadData()
+        }
         setupSubviews()
         viewModel.getGalleries()
     }
@@ -63,25 +65,7 @@ class GalleriesViewController: UICollectionViewController {
         view.backgroundColor = .systemBackground
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
-        collectionView.register(cell: PhotoCell.self)
-    }
-    
-    private func bindToViewModel() {
-        viewModel.didUpdateGalleries = { [weak self] in
-            self?.collectionView.reloadData()
-        }
-        
-        viewModel.didFailedUpdateGalleries = { [weak self] in
-            let alertController = UIAlertController(title: "Whoops, looks like we hit a network issue.",
-                                                    message: nil,
-                                                    preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in self?.viewModel.getGalleries() }
-            
-            [defaultAction, retryAction].forEach { alertController.addAction($0) }
-            
-            self?.present(alertController, animated: true, completion: nil)
-        }
+        collectionView.register(cell: ImageCell.self)
     }
 }
 
@@ -95,7 +79,7 @@ extension GalleriesViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: PhotoCell = collectionView.dequeue(for: indexPath)
+        let cell: ImageCell = collectionView.dequeue(for: indexPath)
         let photo = viewModel.photo(at: indexPath)
         if let photo = photo {
             cell.configure(item: photo)

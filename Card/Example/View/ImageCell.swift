@@ -1,5 +1,5 @@
 //
-//  PhotoCell.swift
+//  ImageCell.swift
 //  Card
 //
 //  Created by Wei-Lun Su on 3/4/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoCell: CarouselCell {
+class ImageCell: CarouselCell {
     
     private let card = ImageCard<Photo>()
     
