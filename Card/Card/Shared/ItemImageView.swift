@@ -1,5 +1,5 @@
 //
-//  CardImageView.swift
+//  ItemImageView.swift
 //  Card
 //
 //  Created by Wei-Lun Su on 3/3/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardImageView: UIImageView {
+class ItemImageView: UIImageView {
 
     init(cornerRadius: CGFloat = 0.0, color: UIColor = .gray) {
         super.init(frame: .zero)

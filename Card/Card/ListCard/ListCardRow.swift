@@ -9,10 +9,10 @@
 import UIKit
 
 protocol ListCardRowDelegate: AnyObject {
-    func userDidTapRow(_ row: CardData)
+    func userDidTapRow(_ row: Item)
 }
 
-class ListCardRow<T: CardData>: UIView, Tappable {
+class ListCardRow<T: Item>: UIView, Tappable {
     
     // MARK: - UI Properties
     
@@ -22,8 +22,8 @@ class ListCardRow<T: CardData>: UIView, Tappable {
         return imageView
     }()
     
-    private lazy var titleLabel: CardDescriptionLabel = {
-        let label = CardDescriptionLabel(numberOfLines: 1, textColor: LabelAppearance.subtitle.textColor)
+    private lazy var titleLabel: DescriptionLabel = {
+        let label = DescriptionLabel(numberOfLines: 1, textColor: LabelAppearance.subtitle.textColor)
         return label
     }()
     

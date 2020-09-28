@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ListCardViewModel<T: CardData> {
+struct ListCardViewModel<T: Item> {
     
     var title: String
     var components: [ListCardRowViewModel<T>]

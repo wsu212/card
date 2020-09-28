@@ -1,8 +1,8 @@
 //
 //  Photos.swift
-//  PhotosBrowser
+//  Card
 //
-//  Created by Allen Su on 1/26/19.
+//  Created by Wei-Lun Su on 3/9/19.
 //  Copyright © 2019 Wei-Lun Su. All rights reserved.
 //
 

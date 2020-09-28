@@ -1,5 +1,5 @@
 //
-//  Card.swift
+//  ItemView.swift
 //  Card
 //
 //  Created by Wei-Lun Su on 3/3/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-open class Card: UIView {
+open class ItemView: UIView {
     
-    lazy var cardView: UIView = {
+    lazy var mainView: UIView = {
         let cardView = UIView()
         cardView.layer.cornerRadius = 5.0
         cardView.backgroundColor = .white
@@ -20,8 +20,8 @@ open class Card: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(cardView)
-        cardView.pinEdges(to: self)
+        addSubview(mainView)
+        mainView.pinEdges(to: self)
     }
     
     required public init?(coder aDecoder: NSCoder) {

@@ -1,8 +1,8 @@
 //
 //  Collection.swift
-//  PhotosBrowser
+//  Card
 //
-//  Created by Allen Su on 1/26/19.
+//  Created by Wei-Lun Su on 3/9/19.
 //  Copyright © 2019 Wei-Lun Su. All rights reserved.
 //
 
@@ -35,4 +35,14 @@ struct Gallery: Decodable {
     var stat: String?
     var title: String?
     var photos: Photos?
+}
+
+extension Gallery: List {
+    var numberOfItems: Int {
+        photos?.photo?.count ?? 0
+    }
+
+    func item(at indexPath: IndexPath) -> Item? {
+        photos?.photo?[indexPath.row]
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  ImageCell.swift
+//  ItemImageCell.swift
 //  Card
 //
 //  Created by Wei-Lun Su on 3/4/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageCell: CarouselCell {
+class ItemImageCell: UICollectionViewCell {
     
     private let card = ImageCard<Photo>()
     
@@ -22,12 +22,12 @@ class ImageCell: CarouselCell {
         super.init(coder: coder)
     }
     
-    override func configure(item: CardData) {
-        card.updateUI(data: item)
+    func updateUI(item: Item) {
+        card.updateUI(item: item)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        card.updateUI(data: nil)
+        card.updateUI(item: nil)
     }
 }
