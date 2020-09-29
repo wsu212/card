@@ -7,7 +7,15 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SwiftUIViewController: UIViewController {
-    //
+    let uiHostingController = UIHostingController(rootView: ContentView())
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addChild(uiHostingController)
+        view.addSubview(uiHostingController.view)
+        uiHostingController.view.pinEdges(to: view)
+    }
 }

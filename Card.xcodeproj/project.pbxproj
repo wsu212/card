@@ -18,6 +18,7 @@
 		046B3DFB2233249E00759527 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3DF92233249E00759527 /* UITableViewExtensions.swift */; };
 		046B3DFC2233249E00759527 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046B3DFA2233249E00759527 /* UIViewExtension.swift */; };
 		0479ACCC2522B20100783425 /* SwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479ACCB2522B20100783425 /* SwiftUIViewController.swift */; };
+		0479ACD02522B42A00783425 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479ACCF2522B42A00783425 /* ContentView.swift */; };
 		04D5CC4F2234279800EEF090 /* Photo+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D5CC4E2234279800EEF090 /* Photo+Item.swift */; };
 		04D96668222D6C6700BFC87A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665A222D6C6700BFC87A /* ListViewModel.swift */; };
 		04D96669222D6C6700BFC87A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D9665C222D6C6700BFC87A /* Collection.swift */; };
@@ -62,6 +63,7 @@
 		046B3DF92233249E00759527 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		046B3DFA2233249E00759527 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		0479ACCB2522B20100783425 /* SwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewController.swift; sourceTree = "<group>"; };
+		0479ACCF2522B42A00783425 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		04D5CC4E2234279800EEF090 /* Photo+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Item.swift"; sourceTree = "<group>"; };
 		04D9665A222D6C6700BFC87A /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		04D9665C222D6C6700BFC87A /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				0429C1FC224715FF006B47BD /* ItemImageCell.swift */,
 				04D96667222D6C6700BFC87A /* CollectionViewController.swift */,
 				0479ACCB2522B20100783425 /* SwiftUIViewController.swift */,
+				0479ACCF2522B42A00783425 /* ContentView.swift */,
 				04D9665A222D6C6700BFC87A /* ListViewModel.swift */,
 				E43CE6492522197A00408E8D /* Service.swift */,
 				04D9665B222D6C6700BFC87A /* Model */,
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0479ACCC2522B20100783425 /* SwiftUIViewController.swift in Sources */,
+				0479ACD02522B42A00783425 /* ContentView.swift in Sources */,
 				04D5CC4F2234279800EEF090 /* Photo+Item.swift in Sources */,
 				046B3DFC2233249E00759527 /* UIViewExtension.swift in Sources */,
 				046B3DFB2233249E00759527 /* UITableViewExtensions.swift in Sources */,
