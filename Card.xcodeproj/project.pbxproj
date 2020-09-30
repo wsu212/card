@@ -34,7 +34,7 @@
 		04D9668D222D6DE600BFC87A /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96685222D6DE600BFC87A /* ItemImageView.swift */; };
 		04D96695222D78D000BFC87A /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D96694222D78D000BFC87A /* ImageCard.swift */; };
 		E43CE64A2522197A00408E8D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43CE6492522197A00408E8D /* Service.swift */; };
-		E43CE65825221F8600408E8D /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43CE65725221F8600408E8D /* List.swift */; };
+		E43CE65825221F8600408E8D /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43CE65725221F8600408E8D /* ItemList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,7 @@
 		04D96685222D6DE600BFC87A /* ItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		04D96694222D78D000BFC87A /* ImageCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
 		E43CE6492522197A00408E8D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		E43CE65725221F8600408E8D /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		E43CE65725221F8600408E8D /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				04D96672222D6C7A00BFC87A /* AppDelegate.swift */,
+				04D9667F222D6DE600BFC87A /* Item.swift */,
+				E43CE65725221F8600408E8D /* ItemList.swift */,
 				0429C1FC224715FF006B47BD /* ItemImageCell.swift */,
 				04D96667222D6C6700BFC87A /* CollectionViewController.swift */,
 				0479ACCB2522B20100783425 /* SwiftUIViewController.swift */,
@@ -207,8 +209,6 @@
 		04D9667E222D6DE600BFC87A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				04D9667F222D6DE600BFC87A /* Item.swift */,
-				E43CE65725221F8600408E8D /* List.swift */,
 				04D96680222D6DE600BFC87A /* DescriptionLabel.swift */,
 				04D96682222D6DE600BFC87A /* TitleLabel.swift */,
 				04D96683222D6DE600BFC87A /* Tappable.swift */,
@@ -343,7 +343,7 @@
 				046B3DF5223320F800759527 /* ListCardRowViewModel.swift in Sources */,
 				04D9668C222D6DE600BFC87A /* ItemView.swift in Sources */,
 				04D96670222D6C6700BFC87A /* GalleryService.swift in Sources */,
-				E43CE65825221F8600408E8D /* List.swift in Sources */,
+				E43CE65825221F8600408E8D /* ItemList.swift in Sources */,
 				04D96669222D6C6700BFC87A /* Collection.swift in Sources */,
 				04D9668B222D6DE600BFC87A /* Tappable.swift in Sources */,
 				046B3DF6223320F800759527 /* ListCardRow.swift in Sources */,

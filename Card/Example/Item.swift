@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol Item {
-    var itemTitle: String? { get }
-    var itemDescription: String? { get }
-    var itemImageURL: String? { get }
+    var headline: String? { get }
+    var summary: String? { get }
+    var image: String? { get }
 }

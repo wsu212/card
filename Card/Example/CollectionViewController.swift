@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewController<T: List>: UICollectionViewController {
+class CollectionViewController<T: ItemList>: UICollectionViewController {
     
     private var viewModel: ListViewModel<T>
     

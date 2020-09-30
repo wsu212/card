@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class ListViewModel<T: List> {
+class ListViewModel<T: ItemList> {
     private let service: Service
     private var cancellable: AnyCancellable?
     

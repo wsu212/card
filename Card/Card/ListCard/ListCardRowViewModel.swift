@@ -11,8 +11,8 @@ import Foundation
 struct ListCardRowViewModel<T: Item> {
     
     var row: T
-    var image: String { return row.itemImageURL ?? "" }
-    var title: String { return row.itemTitle ?? "" }
+    var image: String { return row.image ?? "" }
+    var title: String { return row.headline ?? "" }
     
     init(row: T) {
         self.row = row
