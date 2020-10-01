@@ -37,7 +37,7 @@ struct Gallery: Decodable {
     var photos: Photos?
 }
 
-extension Gallery: List {
+extension Gallery: ItemList {
     var numberOfItems: Int {
         photos?.photo?.count ?? 0
     }

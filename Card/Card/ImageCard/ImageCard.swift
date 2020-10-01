@@ -56,9 +56,9 @@ class ImageCard<T: Item>: ItemView, Tappable {
     }
     
     func updateUI(item: Item?) {
-        titleLabel.text = item?.itemTitle
-        subtitleLabel.text = item?.itemDescription
-        imageView.setImage(url: item?.itemImageURL)
+        titleLabel.text = item?.headline
+        subtitleLabel.text = item?.summary
+        imageView.setImage(url: item?.image)
     }
     
     private func setupSubviews() {

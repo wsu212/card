@@ -1,5 +1,5 @@
 //
-//  List.swift
+//  ItemList.swift
 //  Card
 //
 //  Created by Su, Wei-Lun on 9/28/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol List: Decodable {
+protocol ItemList: Decodable {
     var numberOfItems: Int { get }
     func item(at indexPath: IndexPath) -> Item?
 }

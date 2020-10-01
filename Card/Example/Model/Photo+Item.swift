@@ -9,7 +9,7 @@
 import Foundation
 
 extension Photo: Item {
-    var itemTitle: String? { return title }
-    var itemDescription: String? { return owner }
-    var itemImageURL: String? { return imageURL }
+    var headline: String? { return title }
+    var summary: String? { return owner }
+    var image: String? { return imageURL }
 }
