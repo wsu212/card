@@ -16,7 +16,7 @@ struct Photos: Decodable {
     var photo: [Photo]?
 }
 
-struct Photo: Decodable {
+struct Photo: Decodable, Identifiable {
     var id: String?
     var owner: String?
     var secret: String?

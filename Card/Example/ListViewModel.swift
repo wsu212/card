@@ -9,19 +9,20 @@
 import Foundation
 import Combine
 
-class ListViewModel<T: ItemList> {
+class ListViewModel<T: ItemList>: ObservableObject {
     private let service: Service
     private var cancellable: AnyCancellable?
     
     var didUpdateItems: (() -> Void)?
     
-    var items: [T] {
+    @Published var items: [T] {
         didSet { self.didUpdateItems?() }
     }
     
     init(items: [T], service: Service) {
         self.items = items
         self.service = service
+        self.getItems()
     }
     
     func getItems(page: Int = 0, itemsPerPage: Int = 20) {

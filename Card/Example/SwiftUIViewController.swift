@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 class SwiftUIViewController: UIViewController {
-    let uiHostingController = UIHostingController(rootView: ContentView())
+    let uiHostingController = UIHostingController(rootView: PhotosListView())
     
     override func viewDidLoad() {
         super.viewDidLoad()
