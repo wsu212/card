@@ -6,8 +6,8 @@ This Example project demonstrates how to:
 
 with [MVVM](https://www.objc.io/issues/13-architecture/mvvm/) architecture.
 
-
-![](Images/carousel.png)
+![](Images/uikit.png)
+![](Images/swiftui.png)
 
 ## Author
 
