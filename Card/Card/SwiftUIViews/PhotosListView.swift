@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// TODO: Pass Generic Types <T: ItemList, S: Service>
 struct PhotosListView: View {
     @ObservedObject private var viewModel = ListViewModel<Gallery>(items: [], service: GalleryService())
     

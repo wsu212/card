@@ -1,5 +1,5 @@
 //
-//  ItemImageCell.swift
+//  ImageCell.swift
 //  Card
 //
 //  Created by Wei-Lun Su on 3/4/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ItemImageCell: UICollectionViewCell {
+class ImageCell<T: Item>: UICollectionViewCell {
     
-    private let card = ImageCard<Photo>()
+    private let card = ImageCard<T>()
     
     override init (frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +22,7 @@ class ItemImageCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
-    func updateUI(item: Item) {
+    func updateUI(item: T) {
         card.updateUI(item: item)
     }
     

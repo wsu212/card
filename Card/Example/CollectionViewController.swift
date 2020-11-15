@@ -58,7 +58,7 @@ class CollectionViewController<T: ItemList>: UICollectionViewController {
         view.backgroundColor = .systemBackground
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
-        collectionView.register(cell: ItemImageCell.self)
+        collectionView.register(cell: ImageCell<Photo>.self)
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -70,9 +70,9 @@ class CollectionViewController<T: ItemList>: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: ItemImageCell = collectionView.dequeue(for: indexPath)
+        let cell: ImageCell<Photo> = collectionView.dequeue(for: indexPath)
         let item = viewModel.item(at: indexPath)
-        if let item = item {
+        if let item = item as? Photo {
             cell.updateUI(item: item)
         }
         return cell
