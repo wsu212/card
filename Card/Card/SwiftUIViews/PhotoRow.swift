@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// TODO: Pass Generic Types <T: Item>
 struct PhotoRow: View {
     var photo: Photo    
     var body: some View {
